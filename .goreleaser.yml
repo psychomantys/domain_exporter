@@ -46,7 +46,7 @@ dockers:
     goarch: amd64
     dockerfile: Dockerfile
     image_templates:
-      - ghcr.io/shift/domain_exporter:v{{ .Version }}-amd64
+      - ghcr.io/psychomantys/domain_exporter:v{{ .Version }}-amd64
     build_flag_templates:
       - "--pull"
       - --label=org.opencontainers.image.created={{.Date}}
@@ -57,14 +57,14 @@ dockers:
       - --label=org.opencontainers.image.url={{.GitURL}}
       - --label=org.opencontainers.image.documentation={{.GitURL}}
       - --label=org.opencontainers.image.source={{replace .GitURL ".git" "" }}
-      - --label=io.artifacthub.package.readme-url=https://raw.githubusercontent.com/shift/domain_exporter/master/README.md
+      - --label=io.artifacthub.package.readme-url=https://raw.githubusercontent.com/psychomantys/domain_exporter/master/README.md
       - "--platform=linux/amd64"
   - use: buildx
     goos: linux
     goarch: arm64
     dockerfile: Dockerfile
     image_templates:
-      - ghcr.io/shift/domain_exporter:v{{ .Version }}-arm64
+      - ghcr.io/psychomantys/domain_exporter:v{{ .Version }}-arm64
     build_flag_templates:
       - "--pull"
       - --label=org.opencontainers.image.created={{.Date}}
@@ -75,7 +75,7 @@ dockers:
       - --label=org.opencontainers.image.url={{.GitURL}}
       - --label=org.opencontainers.image.documentation={{.GitURL}}
       - --label=org.opencontainers.image.source={{replace .GitURL ".git" "" }}
-      - --label=io.artifacthub.package.readme-url=https://raw.githubusercontent.com/shift/domain_exporter/master/README.md
+      - --label=io.artifacthub.package.readme-url=https://raw.githubusercontent.com/psychomantys/domain_exporter/master/README.md
       - "--platform=linux/arm64"
   - use: buildx
     goos: linux
@@ -83,7 +83,7 @@ dockers:
     goarm: "7"
     dockerfile: Dockerfile
     image_templates:
-      - ghcr.io/shift/domain_exporter:v{{ .Version }}-arm32v7
+      - ghcr.io/psychomantys/domain_exporter:v{{ .Version }}-arm32v7
     build_flag_templates:
       - "--pull"
       - --label=org.opencontainers.image.created={{.Date}}
@@ -94,15 +94,15 @@ dockers:
       - --label=org.opencontainers.image.url={{.GitURL}}
       - --label=org.opencontainers.image.documentation={{.GitURL}}
       - --label=org.opencontainers.image.source={{replace .GitURL ".git" "" }}
-      - --label=io.artifacthub.package.readme-url=https://raw.githubusercontent.com/shift/domain_exporter/master/README.md
+      - --label=io.artifacthub.package.readme-url=https://raw.githubusercontent.com/psychomantys/domain_exporter/master/README.md
       - "--platform=linux/arm/v7"
 docker_manifests:
   - use: docker
-    name_template: ghcr.io/shift/domain_exporter:v{{ .Version }}
+    name_template: ghcr.io/psychomantys/domain_exporter:v{{ .Version }}
     image_templates:
-      - ghcr.io/shift/domain_exporter:v{{ .Version }}-amd64
-      - ghcr.io/shift/domain_exporter:v{{ .Version }}-arm64
-      - ghcr.io/shift/domain_exporter:v{{ .Version }}-arm32v7
+      - ghcr.io/psychomantys/domain_exporter:v{{ .Version }}-amd64
+      - ghcr.io/psychomantys/domain_exporter:v{{ .Version }}-arm64
+      - ghcr.io/psychomantys/domain_exporter:v{{ .Version }}-arm32v7
 signs:
   - cmd: cosign
     stdin: "{{ .Env.COSIGN_PASSWORD }}"
