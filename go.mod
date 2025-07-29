@@ -1,6 +1,6 @@
 module github.com/shift/domain_exporter
 
-go 1.23.8
+go 1.23
 
 toolchain go1.24.2
 
