@@ -35,8 +35,8 @@ jobs:
           password: ${{ secrets.GH_TOKEN }}
       - name: Install Cosign
         uses: sigstore/cosign-installer@main
-        with:
-          cosign-release: "v2.4.0"
+        #with:
+        #  cosign-release: "v2.4.0"
       - name: Setup Cosign
         run: |
           echo "${COSIGN_KEY}" > "$GITHUB_WORKSPACE/cosign.key"
