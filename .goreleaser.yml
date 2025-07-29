@@ -1,7 +1,7 @@
 dist: releases
 release:
   github:
-    owner: shift
+    owner: psychomantys
     name: domain_exporter
   extra_files:
     - glob: ./cosign.pub
