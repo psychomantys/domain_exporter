@@ -32,22 +32,22 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GH_TOKEN }}
       - name: Install Cosign
         uses: sigstore/cosign-installer@main
-        with:
-          cosign-release: "v1.4.1"
+        #with:
+        #  cosign-release: "v2.4.0"
       - name: Setup Cosign
         run: |
           echo "${COSIGN_KEY}" > "$GITHUB_WORKSPACE/cosign.key"
         env:
           COSIGN_KEY: ${{ secrets.COSIGN_KEY }}
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v4
+        uses: goreleaser/goreleaser-action@v6
         with:
           distribution: goreleaser
           version: latest
-          args: release --rm-dist
+          args: release --clean
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASES_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}

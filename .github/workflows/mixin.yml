@@ -2,7 +2,7 @@ name: Generate Mixin Artifacts
 on:
   pull_request:
   push:
-    
+
 jobs:
   format:
     runs-on: ubuntu-latest
@@ -11,7 +11,7 @@ jobs:
       - uses: kobtea/setup-jsonnet-action@v1
       - run: |
           cd mixin
-          jb install
+          jb install || true
           jsonnet -S alerts.jsonnet
           rm -rf ../chart/dashboards
           mkdir -p ../chart/dashboards
