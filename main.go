@@ -206,13 +206,17 @@ func lookup(domain string, handler *prometheus.GaugeVec, parsedExpiration *prome
 	return date, nil
 }
 
+// whoisClient uses a short timeout so blocked WHOIS servers fail fast and RDAP
+// can still complete within typical Prometheus scrape timeouts.
+var whoisClient = whois.NewClient(5 * time.Second)
+
 func lookupWhois(domain string) (float64, error) {
 	req, err := whois.NewRequest(domain)
 	if err != nil {
 		return -1, err
 	}
 
-	res, err := whois.DefaultClient.Fetch(req)
+	res, err := whoisClient.Fetch(req)
 	if err != nil {
 		return -1, err
 	}
