@@ -184,17 +184,11 @@ func parse(host string, res []byte) (float64, error) {
 }
 
 func lookup(domain string, handler *prometheus.GaugeVec, parsedExpiration *prometheus.GaugeVec) (float64, error) {
-	req, err := whois.NewRequest(domain)
+	date, err := lookupWhois(domain)
 	if err != nil {
-		return -1, err
+		level.Info(logger).Log("msg", "WHOIS lookup failed, trying RDAP", "domain", domain, "err", err)
+		date, err = lookupRDAP(domain)
 	}
-
-	res, err := whois.DefaultClient.Fetch(req)
-	if err != nil {
-		return -1, err
-	}
-
-	date, err := parse(domain, res.Body)
 	if err != nil {
 		if parsedExpiration != nil {
 			parsedExpiration.WithLabelValues(domain).Set(0)
@@ -210,4 +204,18 @@ func lookup(domain string, handler *prometheus.GaugeVec, parsedExpiration *prome
 	}
 
 	return date, nil
+}
+
+func lookupWhois(domain string) (float64, error) {
+	req, err := whois.NewRequest(domain)
+	if err != nil {
+		return -1, err
+	}
+
+	res, err := whois.DefaultClient.Fetch(req)
+	if err != nil {
+		return -1, err
+	}
+
+	return parse(domain, res.Body)
 }

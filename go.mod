@@ -8,6 +8,7 @@ require (
 	github.com/go-kit/kit v0.13.0
 	github.com/prometheus/client_golang v1.15.1
 	github.com/prometheus/common v0.43.0
+	github.com/zonedb/zonedb v1.0.5258
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -26,7 +27,6 @@ require (
 	github.com/prometheus/procfs v0.9.0 // indirect
 	github.com/saintfish/chardet v0.0.0-20230101081208-5e3ef4b5456d // indirect
 	github.com/xhit/go-str2duration/v2 v2.1.0 // indirect
-	github.com/zonedb/zonedb v1.0.5258 // indirect
 	golang.org/x/net v0.55.0 // indirect
 	golang.org/x/sys v0.45.0 // indirect
 	golang.org/x/text v0.37.0 // indirect

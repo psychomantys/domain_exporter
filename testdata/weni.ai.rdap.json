@@ -1,0 +1,29 @@
+{
+  "objectClassName": "domain",
+  "ldhName": "weni.ai",
+  "unicodeName": "weni.ai",
+  "status": [
+    "client delete prohibited",
+    "client renew prohibited",
+    "client transfer prohibited",
+    "client update prohibited"
+  ],
+  "events": [
+    {
+      "eventAction": "expiration",
+      "eventDate": "2028-10-31T05:47:30Z"
+    },
+    {
+      "eventAction": "registration",
+      "eventDate": "2020-10-31T05:47:30Z"
+    },
+    {
+      "eventAction": "last changed",
+      "eventDate": "2026-11-05T11:36:42.565Z"
+    },
+    {
+      "eventAction": "last update of RDAP database",
+      "eventDate": "2026-11-05T18:52:58.088Z"
+    }
+  ]
+}
